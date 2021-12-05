@@ -27,9 +27,7 @@ public class DetailActivity extends AppCompatActivity {
         detail = findViewById(R.id.tv_detail_detail);
         content = findViewById(R.id.tv_detail_content);
         iv_detail = findViewById(R.id.iv_detail);
-
         article = (Article) getIntent().getSerializableExtra("data");
-
         title.setText(article.getTitle());
         author.setText(article.getAuthor());
         date.setText((article.getPublishedAt()));

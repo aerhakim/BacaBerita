@@ -29,7 +29,7 @@ public class Config {
                 @Override
                 public void onResponse(Call<Article> call, Response<Article> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Berhasil Memuat", Toast.LENGTH_SHORT).show();
                     }
 
                 listener.onFetchData(response.body().getArticles(),response.message());
@@ -37,7 +37,7 @@ public class Config {
 
                 @Override
                 public void onFailure(Call<Article> call, Throwable t) {
-                listener.onError("Request Failed!");
+                listener.onError("Gagal Memuat !");
                 }
             });
         } catch (Exception e){
