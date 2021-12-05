@@ -1,15 +1,27 @@
 package io.github.aerhakim.bacaberita.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
-
+import android.net.ConnectivityManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,16 +32,13 @@ import io.github.aerhakim.bacaberita.fragment.SettingFragment;
 import io.github.aerhakim.bacaberita.fragment.SourceFragment;
 
 public class MainActivity extends AppCompatActivity  {
-//public class MainActivity extends AppCompatActivity implements SelectListener {
 
-//    RecyclerView recyclerView;
-//    CustomAdapter adapter;
-//    ProgressDialog dialog;
     public BottomNavigationView navigation;
     public ViewPager viewPager;
     MenuItem prevMenuItem;
     int pager_number = 4;
     View view;
+    SwipeRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +46,7 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         view = findViewById(android.R.id.content);
         viewPager = findViewById(R.id.viewpager);
+        refreshLayout = findViewById(R.id.swipe_refresh_layout_main);
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         viewPager.setOffscreenPageLimit(pager_number);
         navigation = findViewById(R.id.navigation);
@@ -53,9 +63,6 @@ public class MainActivity extends AppCompatActivity  {
                     return true;
                 case R.id.navigation_setting:
                     viewPager.setCurrentItem(3);
-//                    Jika mau pindah dari fragment ke activity
-//                            Intent i = new Intent(this, SettingActivity.class);
-//                            startActivity(i);
                     return true;
             }
             return false;
@@ -81,12 +88,20 @@ public class MainActivity extends AppCompatActivity  {
 
             }
         });
-//        dialog = new ProgressDialog(this);
-//        dialog.setTitle("Memuat Berita...");
-//        dialog.show();
-//        Config config = new Config(this);
-//        config.getNewsHealines(listener,"general", null);
+
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent j = getIntent();
+                j.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                finish();
+                startActivity(j);
+            }
+        });
+
     }
+
     public class MyAdapter extends FragmentPagerAdapter {
 
         MyAdapter(FragmentManager fm) {
@@ -121,31 +136,4 @@ public class MainActivity extends AppCompatActivity  {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-//    private final DataListener<Response> listener = new DataListener<Response>() {
-//        @Override
-//        public void onFetchData(List<Article> list, String message) {
-//            showNews(list);
-//            dialog.dismiss();
-//        }
-//
-//        @Override
-//        public void onError(String message) {
-//
-//        }
-//    };
-
-//    private void showNews(List<Article> list) {
-//        recyclerView = findViewById(R.id.rv_main);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-//        adapter = new CustomAdapter(this, list, this);
-//        recyclerView.setAdapter(adapter);
-//    }
-
-//    @Override
-//    public void OnNewsClicked(Article article) {
-//        startActivity(new Intent(MainActivity.this, DetailActivity.class)
-//        .putExtra("data", article));
-//    }
 }

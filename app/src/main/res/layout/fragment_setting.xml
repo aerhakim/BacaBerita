@@ -64,7 +64,7 @@
 
             </com.balysv.materialripple.MaterialRippleLayout>
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,14 +110,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_about_privacy"
+                        android:text="Terms and Conditions"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                         android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sub_title_about_privacy" />
+                        android:text="Baca Berita App's Terms and Conditions" />
 
                 </LinearLayout>
 
@@ -126,7 +126,7 @@
         </com.balysv.materialripple.MaterialRippleLayout>
 
         <com.balysv.materialripple.MaterialRippleLayout
-            android:id="@+id/btn_rate"
+            android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:mrl_rippleAlpha="0.2"
@@ -160,14 +160,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Star Me"
+                        android:text="Save Me On GitHub"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                         android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Give me star in GitHub" />
+                        android:text="Save this project repository on GitHub" />
 
                 </LinearLayout>
 

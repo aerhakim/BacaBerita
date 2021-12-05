@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe_refresh_layout_main">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/tab_coordinator_layout"
@@ -13,6 +17,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/navigation"
         android:fitsSystemWindows="true">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/tab_appbar_layout"
         android:layout_width="match_parent"
@@ -66,19 +71,11 @@
 
                 <ImageButton
                     android:id="@+id/btn_search"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="fitXY"
                     android:background="?selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_search" />
-
-
-<!--                <ImageButton-->
-<!--                    android:id="@+id/btn_overflow"-->
-<!--                    android:layout_width="@dimen/spacing_xxlarge"-->
-<!--                    android:layout_height="@dimen/spacing_xxlarge"-->
-<!--                    android:background="?selectableItemBackgroundBorderless"-->
-<!--                    android:src="@drawable/ic_overflow"-->
-<!--                    android:visibility="gone"/>-->
 
             </LinearLayout>
 
@@ -86,22 +83,15 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rv_main"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="@dimen/_10sdp"-->
-<!--        android:layout_marginTop="@dimen/_10sdp"-->
-<!--        android:layout_marginEnd="@dimen/_10sdp"-->
-<!--        android:layout_marginBottom="@dimen/_10sdp">-->
 
-<!--    </androidx.recyclerview.widget.RecyclerView>-->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
@@ -109,26 +99,7 @@
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation" />
+
+
 </RelativeLayout>
 
-<!--    <?xml version="1.0" encoding="utf-8"?>-->
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--xmlns:tools="http://schemas.android.com/tools"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="match_parent"-->
-<!--android:orientation="vertical"-->
-<!--tools:context=".activity.MainActivity">-->
-
-<!--<androidx.recyclerview.widget.RecyclerView-->
-<!--    android:id="@+id/rv_main"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_marginStart="@dimen/_10sdp"-->
-<!--    android:layout_marginTop="@dimen/_10sdp"-->
-<!--    android:layout_marginEnd="@dimen/_10sdp"-->
-<!--    android:layout_marginBottom="@dimen/_10sdp">-->
-
-<!--</androidx.recyclerview.widget.RecyclerView>-->
-
-<!--</RelativeLayout>-->

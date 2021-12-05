@@ -23,9 +23,9 @@
             <TextView
                 android:layout_marginTop="10dp"
                 android:id="@+id/tv_title"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:layout_width="match_parent"
-                android:textColor="@color/black"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
                 android:maxLines="3"
                 android:layout_height="wrap_content">
 
@@ -33,11 +33,11 @@
 
             <TextView
                 android:id="@+id/tv_source"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                 android:maxLines="1"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_height="wrap_content">
