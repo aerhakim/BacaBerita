@@ -2,6 +2,7 @@ package io.github.aerhakim.bacaberita.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -17,9 +18,11 @@ import io.github.aerhakim.bacaberita.models.Article;
 public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     private Context context;
     private List<Article> headlines;
+    private SelectListener listener;
 
-    public CustomAdapter(Context context, List<Article> headlines) {
+    public CustomAdapter(Context context, List<Article> headlines, SelectListener listener) {
         this.context = context;
+        this.listener = listener;
         this.headlines = headlines;
     }
 
@@ -38,6 +41,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
         Picasso.get().load(headlines.get(position).getUrlToImage()).into(holder.iv_headline);
     }
 
+    holder.cardView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            listener.OnNewsClicked(headlines.get(position));
+        }
+    });
 
     }
 

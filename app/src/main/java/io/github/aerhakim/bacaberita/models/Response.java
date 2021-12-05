@@ -1,8 +1,9 @@
 package io.github.aerhakim.bacaberita.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Response {
+public class Response implements Serializable {
     String status;
     int totalResult;
     List<Article> articles;

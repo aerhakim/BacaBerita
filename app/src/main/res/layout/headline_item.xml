@@ -3,24 +3,24 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_container"
-    app:cardElevation="@dimen/_10sdp"
-    android:layout_margin="@dimen/_10sdp"
+    app:cardElevation="8dp"
+    android:layout_margin="8dp"
     android:layout_height="wrap_content">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_margin="@dimen/_8sdp"
-    android:weightSum="5">
+    android:layout_margin="6dp"
+    android:weightSum="3">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="8dp"
         android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_title"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:maxLines="3"
@@ -30,7 +30,7 @@
 
             <TextView
                 android:id="@+id/tv_source"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -47,7 +47,7 @@
         android:layout_width="0dp"
         android:src="@drawable/ic_logo"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:layout_weight="1">
 
     </ImageView>

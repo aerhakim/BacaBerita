@@ -1,6 +1,9 @@
 package io.github.aerhakim.bacaberita.models;
 
-public class Article {
+import java.io.Serializable;
+import java.util.List;
+
+public class Article implements Serializable {
     Source source = null;
     String author = "";
     String title = "";
@@ -9,7 +12,7 @@ public class Article {
     String urlToImage = "";
     String publishedAt = "";
     String content = "";
-
+    List<Article> articles;
     public Source getSource() {
         return source;
     }
@@ -72,5 +75,13 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }
