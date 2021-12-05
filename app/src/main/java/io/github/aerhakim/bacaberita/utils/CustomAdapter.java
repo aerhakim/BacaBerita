@@ -25,11 +25,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
         this.listener = listener;
         this.headlines = headlines;
     }
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0) return 1;
+        else return 2;
+    }
 
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CustomViewHolder(LayoutInflater.from(context).inflate(R.layout.headline_item, parent, false));
+        if (viewType == 1) {
+            return new CustomViewHolder(LayoutInflater.from(context).inflate(R.layout.headline_cover, parent, false));
+        }  else {
+            return new CustomViewHolder(LayoutInflater.from(context).inflate(R.layout.headline_item, parent, false));
+        }
+
     }
 
     @Override

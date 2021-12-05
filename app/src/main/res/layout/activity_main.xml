@@ -66,34 +66,19 @@
 
                 <ImageButton
                     android:id="@+id/btn_search"
-                    android:layout_width="@dimen/spacing_xxlarge"
-                    android:layout_height="@dimen/spacing_xxlarge"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:background="?selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_search" />
 
-                <RelativeLayout
-                    android:id="@+id/btn_profile"
-                    android:layout_width="@dimen/spacing_xxlarge"
-                    android:layout_height="@dimen/spacing_xxlarge"
-                    android:background="?selectableItemBackgroundBorderless">
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/img_profile"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_account_circle_white"
-                        app:riv_oval="true" />
-
-                </RelativeLayout>
-
-                <ImageButton
-                    android:id="@+id/btn_overflow"
-                    android:layout_width="@dimen/spacing_xxlarge"
-                    android:layout_height="@dimen/spacing_xxlarge"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_overflow"
-                    android:visibility="gone"/>
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btn_overflow"-->
+<!--                    android:layout_width="@dimen/spacing_xxlarge"-->
+<!--                    android:layout_height="@dimen/spacing_xxlarge"-->
+<!--                    android:background="?selectableItemBackgroundBorderless"-->
+<!--                    android:src="@drawable/ic_overflow"-->
+<!--                    android:visibility="gone"/>-->
 
             </LinearLayout>
 

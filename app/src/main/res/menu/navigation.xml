@@ -12,13 +12,13 @@
         android:title="Category" />
 
     <item
-        android:id="@+id/navigation_favorite"
-        android:icon="@drawable/ic_favorite"
-        android:title="Favorit" />
+        android:id="@+id/navigation_source"
+        android:icon="@drawable/ic_source"
+        android:title="Source" />
 
     <item
-        android:id="@+id/navigation_user"
-        android:icon="@drawable/ic_person"
-        android:title="User" />
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_settings"
+        android:title="Setting" />
 
 </menu>

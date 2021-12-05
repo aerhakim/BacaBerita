@@ -4,34 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.List;
-
 import io.github.aerhakim.bacaberita.R;
 import io.github.aerhakim.bacaberita.fragment.CategoryFragment;
-import io.github.aerhakim.bacaberita.fragment.FavoriteFragment;
 import io.github.aerhakim.bacaberita.fragment.HomeFragment;
-import io.github.aerhakim.bacaberita.fragment.PersonFragment;
-import io.github.aerhakim.bacaberita.models.Article;
-import io.github.aerhakim.bacaberita.models.Response;
-import io.github.aerhakim.bacaberita.utils.CustomAdapter;
-import io.github.aerhakim.bacaberita.utils.SelectListener;
-import io.github.aerhakim.bacaberita.utils.api.Config;
-import io.github.aerhakim.bacaberita.utils.api.DataListener;
+import io.github.aerhakim.bacaberita.fragment.SettingFragment;
+import io.github.aerhakim.bacaberita.fragment.SourceFragment;
 
 public class MainActivity extends AppCompatActivity  {
 //public class MainActivity extends AppCompatActivity implements SelectListener {
@@ -62,10 +48,10 @@ public class MainActivity extends AppCompatActivity  {
                 case R.id.navigation_category:
                     viewPager.setCurrentItem(1);
                     return true;
-                case R.id.navigation_favorite:
+                case R.id.navigation_source:
                     viewPager.setCurrentItem(2);
                     return true;
-                case R.id.navigation_user:
+                case R.id.navigation_setting:
                     viewPager.setCurrentItem(3);
 //                    Jika mau pindah dari fragment ke activity
 //                            Intent i = new Intent(this, SettingActivity.class);
@@ -116,9 +102,9 @@ public class MainActivity extends AppCompatActivity  {
                 case 1:
                     return new CategoryFragment();
                 case 2:
-                    return new FavoriteFragment();
+                    return new SourceFragment();
                 case 3:
-                    return new PersonFragment();
+                    return new SettingFragment();
             }
             return null;
         }
