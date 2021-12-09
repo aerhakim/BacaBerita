@@ -7,6 +7,7 @@
     android:layout_marginBottom="3dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    app:cardCornerRadius="7dp"
     android:layout_height="wrap_content">
 <LinearLayout
     android:layout_width="match_parent"
@@ -14,6 +15,15 @@
     android:orientation="horizontal"
     android:layout_margin="6dp"
     android:weightSum="3">
+    <ImageView
+        android:id="@+id/iv_headline"
+        android:layout_width="0dp"
+        android:src="@drawable/ic_logo"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:layout_weight="1">
+
+    </ImageView>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -46,15 +56,7 @@
 
 
     </LinearLayout>
-    <ImageView
-        android:id="@+id/iv_headline"
-        android:layout_width="0dp"
-        android:src="@drawable/ic_logo"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:layout_weight="1">
 
-    </ImageView>
 
 </LinearLayout>
 </androidx.cardview.widget.CardView>

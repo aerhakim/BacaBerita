@@ -1,6 +1,9 @@
 package io.github.aerhakim.bacaberita.fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -25,7 +28,6 @@ public class SettingFragment extends Fragment {
     //Inisialisasi Variabel
     MaterialRippleLayout btnTos, btnSave, btnMore;
     SwitchCompat switchCompat;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

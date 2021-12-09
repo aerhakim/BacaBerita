@@ -24,19 +24,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="technology" />
+            android:text="Technology" />
     <Button
             android:id="@+id/btn_olahraga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="sports" />
+            android:text="Sports" />
         <Button
             android:id="@+id/btn_kesehatan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="health" />
+            android:text="Health" />
 
     </LinearLayout>
     <LinearLayout
@@ -48,20 +48,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="business" />
+            android:text="Business" />
     <Button
             android:id="@+id/btn_sains"
             android:layout_width="wrap_content"
             android:layout_margin="5dp"
             android:layout_height="wrap_content"
-            android:text="science" />
+            android:text="Science" />
     </LinearLayout>
     <Button
         android:id="@+id/btn_hiburan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="entertainment" />
+        android:text="Entertainment" />
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
