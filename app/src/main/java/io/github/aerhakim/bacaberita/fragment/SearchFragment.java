@@ -110,7 +110,7 @@ public class SearchFragment extends Fragment implements SelectListener {
             dialog = new ProgressDialog(getActivity());
             dialog.setTitle("Memuat Berita");
             dialog.setMessage("Mohon Tunggu Sebentar...");
-            dialog.show();
+            dialog.dismiss();
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setCancelable(true);

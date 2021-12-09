@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<!-- bottom_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
-
+        android:title="Home"
+        app:cnb_iconColor="@color/primary"/>
     <item
-        android:id="@+id/navigation_category"
+        android:id="@+id/category"
         android:icon="@drawable/ic_baseline_category_24"
-        android:title="Category" />
-
+        android:title="Category"
+        app:cnb_iconColor="@color/primary"/>
     <item
-        android:id="@+id/navigation_source"
+        android:id="@+id/search"
         android:icon="@drawable/ic_source"
-        android:title="Search" />
-
+        android:title="Search"
+        app:cnb_iconColor="@color/primary" />
     <item
-        android:id="@+id/navigation_setting"
+        android:id="@+id/setting"
         android:icon="@drawable/ic_settings"
-        android:title="Setting" />
-
+        android:title="Setting"
+        app:cnb_iconColor="@color/primary" />
 </menu>

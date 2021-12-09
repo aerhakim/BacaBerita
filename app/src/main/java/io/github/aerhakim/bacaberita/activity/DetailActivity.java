@@ -18,9 +18,8 @@ import io.github.aerhakim.bacaberita.models.Article;
 public class DetailActivity extends AppCompatActivity {
 
     Article article;
-    TextView title, author, date, detail, content, url;
+    TextView title, author, date, detail, content, url, share;
     ImageView iv_detail;
-    Button share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ public class DetailActivity extends AppCompatActivity {
         url = findViewById(R.id.tv_url);
         content = findViewById(R.id.tv_detail_content);
         iv_detail = findViewById(R.id.iv_detail);
-        share = findViewById(R.id.share);
+        share = findViewById(R.id.tv_share);
         article = (Article) getIntent().getSerializableExtra("data");
         title.setText(article.getTitle());
         author.setText(article.getAuthor());

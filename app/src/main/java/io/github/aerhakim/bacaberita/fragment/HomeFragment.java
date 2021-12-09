@@ -19,6 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+
 import java.util.List;
 
 import io.github.aerhakim.bacaberita.R;
@@ -36,7 +38,7 @@ public class HomeFragment extends Fragment implements SelectListener {
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
-
+    ChipNavigationBar chipNavigationBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

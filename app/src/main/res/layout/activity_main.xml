@@ -5,101 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/fragment_container"
     tools:context=".activity.MainActivity">
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/swipe_refresh_layout_main">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/tab_coordinator_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/navigation"
-        android:fitsSystemWindows="true">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/tab_appbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_500">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:paddingRight="@dimen/spacing_middle"
-            android:paddingEnd="@dimen/spacing_middle"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/title_toolbar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/app_name"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                            android:textColor="@color/white"
-                            android:maxLines="1"
-                            android:ellipsize="end" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/btn_search"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="fitXY"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_search" />
-
-            </LinearLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
-
-
+        app:cnb_unselectedColor="@color/primaryDark"
+        app:cnb_menuResource="@menu/navigation" />
 </RelativeLayout>
-
