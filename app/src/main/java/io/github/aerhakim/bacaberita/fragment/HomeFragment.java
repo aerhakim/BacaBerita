@@ -17,8 +17,10 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.List;
@@ -38,13 +40,18 @@ public class HomeFragment extends Fragment implements SelectListener {
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
-    ChipNavigationBar chipNavigationBar;
+    ShimmerFrameLayout shimmerFrameLayout1, shimmerFrameLayout2;
+    LinearLayout lin1, lin2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater
                 .inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.rv_main);
+        shimmerFrameLayout1 = view.findViewById(R.id.shimmerLayout1);
+        shimmerFrameLayout2 = view.findViewById(R.id.shimmerLayout2);
+        lin1 = view.findViewById(R.id.lin1);
+        lin2 = view.findViewById(R.id.lin2);
         Config config = new Config(getActivity());
         config.getNewsHealines(listener,"general", null);
         cekKoneksi();
@@ -62,7 +69,7 @@ public class HomeFragment extends Fragment implements SelectListener {
 
         @Override
         public void onError(String message) {
-
+            Toast.makeText(getActivity(), "Gagal Mengambil Data!", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -71,6 +78,13 @@ public class HomeFragment extends Fragment implements SelectListener {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         adapter = new CustomAdapter(getActivity(), list, this);
         recyclerView.setAdapter(adapter);
+        shimmerFrameLayout1.startShimmer();
+        shimmerFrameLayout1.setVisibility(View.GONE);
+        shimmerFrameLayout2.startShimmer();
+        shimmerFrameLayout2.setVisibility(View.GONE);
+        lin1.setVisibility(View.GONE);
+        lin2.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -85,7 +99,7 @@ public class HomeFragment extends Fragment implements SelectListener {
             dialog = new ProgressDialog(getActivity());
             dialog.setTitle("Memuat Berita");
             dialog.setMessage("Mohon Tunggu Sebentar...");
-            dialog.show();
+            dialog.dismiss();
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setCancelable(true);
@@ -122,6 +136,19 @@ public class HomeFragment extends Fragment implements SelectListener {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 
+    }
+    @Override
+    public void onResume() {
+        shimmerFrameLayout1.startShimmer();
+        shimmerFrameLayout2.startShimmer();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        shimmerFrameLayout1.stopShimmer();
+        shimmerFrameLayout2.stopShimmer();
+        super.onPause();
     }
 
 }

@@ -1,6 +1,7 @@
 package io.github.aerhakim.bacaberita.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ public class TosActivity extends AppCompatActivity {
         WebView myWebView = (WebView) findViewById(R.id.webview);
         myWebView.loadUrl("https://aerhakim.github.io/html/tos-bc.html");
 
-        ImageView ivBack=findViewById(R.id.ivBack);
+        Toolbar ivBack=findViewById(R.id.ivBack);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         chipNavigationBar = findViewById(R.id.navigation);
         chipNavigationBar.setItemSelected(R.id.home, true);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new HomeFragment()).commit();
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity  {
                         fragment = new SettingFragment();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).commit();
             }
         });
     }

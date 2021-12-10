@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.bumptech.glide.RequestManager;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class CategoryFragment extends Fragment implements SelectListener, View.O
     RecyclerView recyclerView;
     SearchAdapter adapter;
     ProgressDialog dialog;
+    ShimmerFrameLayout shimmerFrameLayout;
     Button teknologi, olahraga, bisnis, kesehatan, hiburan, sains;
 
     @Override
@@ -47,6 +49,7 @@ public class CategoryFragment extends Fragment implements SelectListener, View.O
         View view = inflater
                 .inflate(R.layout.fragment_category, container, false);
         recyclerView = view.findViewById(R.id.rv_main_cat);
+        shimmerFrameLayout = view.findViewById(R.id.shimmerLayout);
         teknologi = view.findViewById(R.id.btn_tekonologi);
         teknologi.setOnClickListener(this);
         olahraga = view.findViewById(R.id.btn_olahraga);
@@ -61,67 +64,19 @@ public class CategoryFragment extends Fragment implements SelectListener, View.O
         sains.setOnClickListener(this);
         Config config = new Config(getActivity());
         config.getNewsHealines(listener,"technology", null);
-
-        cekKoneksi();
-
         return view;
     }
 
-
-    public void cekKoneksi () {
-        if(isNetworkAvailable()) {
-            dialog = new ProgressDialog(getActivity());
-            dialog.setTitle("Memuat Berita");
-            dialog.setMessage("Mohon Tunggu Sebentar...");
-            dialog.dismiss();
-        } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setCancelable(true);
-            builder.setTitle("Tidak ada Koneksi Internet!");
-            builder.setMessage("Silahkan Periksa Koneksi Internet Anda dan Coba Kembali!");
-            builder.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent j = getActivity().getIntent();
-                    j.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getActivity().finish();
-                    startActivity(j);
-                }
-            });
-
-            builder.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                }
-            });
-
-            AlertDialog dialog  = builder.create();
-            dialog.show();
-            Toast.makeText(getActivity(),"Koneksi Internet Tidak Ada", Toast.LENGTH_SHORT).show();
-
-        }
-    }
-
-
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-
-    }
 
     private final DataListener<Response> listener = new DataListener<Response>() {
         @Override
         public void onFetchData(List<Article> list, String message) {
             showNews(list);
-            dialog.dismiss();
         }
 
         @Override
         public void onError(String message) {
-
+            Toast.makeText(getActivity(), "Gagal Mengambil Data!", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -130,6 +85,9 @@ public class CategoryFragment extends Fragment implements SelectListener, View.O
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         adapter = new SearchAdapter(getActivity(), list, this);
         recyclerView.setAdapter(adapter);
+        shimmerFrameLayout.startShimmer();
+        shimmerFrameLayout.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -142,10 +100,18 @@ public class CategoryFragment extends Fragment implements SelectListener, View.O
     public void onClick(View view) {
         Button button = (Button) view;
         String category = button.getText().toString();
-        dialog.setTitle("Memuat kategori " + category);
-        dialog.setMessage("Mohon Tunggu Sebentar...");
-        dialog.show();
         Config config = new Config(getActivity());
         config.getNewsHealines(listener,category, null);
+    }
+    @Override
+    public void onResume() {
+        shimmerFrameLayout.startShimmer();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        shimmerFrameLayout.stopShimmer();
+        super.onPause();
     }
 }

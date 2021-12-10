@@ -81,7 +81,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="200dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_circle_radius"
+                android:background="@drawable/bg_button_blue"
                 android:backgroundTint="@color/primary"
                 android:orientation="horizontal">
 
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
                     android:gravity="center"
-                    android:padding="3dp"
+                    android:padding="5dp"
                     android:text="Baca Selengkapnya"
                     android:textColor="@android:color/white"
                     android:textSize="12sp"

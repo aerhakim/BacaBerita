@@ -15,6 +15,7 @@
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/ivBack"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             app:navigationIcon="@drawable/ic_back">
@@ -78,8 +79,8 @@
                                 android:layout_centerInParent="false"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
-                                android:text="Nama Jalan"
                                 android:maxLines="3"
+                                android:text=""
                                 android:textColor="@android:color/white"
                                 android:textSize="16sp" />
 
@@ -123,7 +124,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:textSize="16sp"
-                    android:text="Penulis :"
+                    android:text="Penulis : "
                     android:layout_width="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:layout_height="wrap_content" />
@@ -132,8 +133,8 @@
                     android:textSize="16sp"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
                     android:layout_width="wrap_content"
+                    android:text=""
                     android:layout_height="wrap_content">
-
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -142,7 +143,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:textSize="16sp"
-                    android:text="Terbit Pada :"
+                    android:text="Terbit Pada : "
                     android:layout_width="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:layout_height="wrap_content" />
@@ -163,45 +164,65 @@
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
-                <RelativeLayout
+                <LinearLayout
+                    android:id="@+id/tv_copy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_button"
                     android:backgroundTint="@color/primary"
                     android:layout_weight="1"
                     android:layout_marginEnd="30dp">
+                    <ImageView
+                        android:layout_margin="10dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/ic_copy" />
                     <TextView
-                        android:id="@+id/tv_copy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="5dp"
                         android:layout_centerInParent="true"
+                        android:drawablePadding="5dp"
+                        android:layout_gravity="center"
                         android:padding="3dp"
                         android:text="Copy Link"
                         android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
-                </RelativeLayout>
 
-                <RelativeLayout
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tv_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_button"
                     android:backgroundTint="@color/primary"
                     android:layout_weight="1"
                     android:layout_marginStart="30dp">
+                    <ImageView
+                        android:layout_margin="10dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/ic_share" />
                     <TextView
-                        android:id="@+id/tv_share"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:drawablePadding="5dp"
+                        android:layout_gravity="center"
                         android:padding="3dp"
                         android:text="Bagikan"
-                        android:layout_centerInParent="true"
                         android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
-                </RelativeLayout>
+
+
+                </LinearLayout>
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
@@ -243,10 +264,11 @@
                                         android:layout_height="wrap_content">
                                     </TextView>
                                             <TextView
+                                                android:layout_marginTop="10dp"
                                                 android:id="@+id/tv_readmore"
                                                 android:layout_width="wrap_content"
                                                 android:textSize="16sp"
-                                                android:textColor="@color/primaryDark"
+                                                android:textColor="@color/primary"
                                                 android:text="[Baca Selengkapnya]"
                                                 android:textStyle="bold"
                                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"

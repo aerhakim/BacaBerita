@@ -7,8 +7,10 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import android.widget.CompoundButton;
 import com.balysv.materialripple.MaterialRippleLayout;
 
 import io.github.aerhakim.bacaberita.R;
+import io.github.aerhakim.bacaberita.activity.MainActivity;
 import io.github.aerhakim.bacaberita.activity.TosActivity;
 
 
@@ -31,11 +34,7 @@ public class SettingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
-            getActivity().setTheme(R.style.Theme_BacaBeritaDark);
-        } else {
-            getActivity().setTheme(R.style.Theme_BacaBerita);
-        }
+
         View view = inflater
         .inflate(R.layout.fragment_setting, container, false);
 
@@ -50,6 +49,16 @@ public class SettingFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), TosActivity.class);
                 startActivity(i);
+            }
+        });
+
+        Toolbar ivBack= view.findViewById(R.id.ivBack);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), MainActivity.class);
+                startActivity(i);
+
             }
         });
 
@@ -74,19 +83,16 @@ public class SettingFragment extends Fragment {
                 startActivity(i);
             }
         });
-
-        switchCompat = view.findViewById(R.id.switch_theme);
-        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
-            }
-        });
+        view.findViewById(R.id.btn_about).setOnClickListener(action -> aboutDialog());
         return view;
     }
-
+    public void aboutDialog() {
+        LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getActivity());
+        View view = layoutInflaterAndroid.inflate(R.layout.custom_dialog_about, null);
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        alert.setView(view);
+        alert.setCancelable(false);
+        alert.setPositiveButton(R.string.dialog_ok, (dialog, which) -> dialog.dismiss());
+        alert.show();
+    }
 }

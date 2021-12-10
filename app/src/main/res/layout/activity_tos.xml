@@ -6,32 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.TosActivity">
-    <RelativeLayout
-        android:id="@+id/rlEditProfile"
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:background="@color/purple_700"
-        android:layout_height="?actionBarSize">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
 
-        <ImageView
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/ivBack"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_centerVertical="true"
-            android:scaleType="fitXY"
-            android:layout_marginStart="@dimen/_minus1sdp"
-            android:padding="@dimen/_5sdp"
-            app:tint="@color/white"
-            android:src="@drawable/ic_back" />
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:navigationIcon="@drawable/ic_back">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="ToS Baca Berita App's"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
-            tools:ignore="MissingPrefix" />
-    </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:text="TOS Baca Berita App's"
+                    android:textColor="@color/primaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"

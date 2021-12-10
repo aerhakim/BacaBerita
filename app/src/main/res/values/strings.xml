@@ -15,4 +15,15 @@
     <string name="sub_title_about_rate">Leave a review on the Google Play</string>
     <string name="sub_title_about_more">More apps from developer</string>
     <string name="sub_title_about_info">App Info, Build Version, Copyright</string>
+    <string name="copyright">Copyright © 2021 AR Hakim \n(github.com/aerhakim). \n\nAll right reserved</string>
+    <string name="dialog_ok">OK</string>
+    <!--Titles-->
+    <string name="first_slide_title">Lorem Ipsum</string>
+
+    <!--Descriptions-->
+    <string name="first_slide_desc">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </string>
+    <!--Buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Lets Get Started</string>
 </resources>

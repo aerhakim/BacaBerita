@@ -59,9 +59,8 @@ public class SplashScreenActivity extends AppCompatActivity {
             editor.putBoolean("firstTime",false);
             editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class); //Nanti diganti jadi onBoarding
-            startActivity(intent);
-
+                Intent intent = new Intent(getApplicationContext(), OnBoardingActivity.class);
+                startActivity(intent);
             } else {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);

@@ -12,4 +12,6 @@
     <color name="primaryDark">#053354</color>
     <color name="gray">#b8b9bb</color>
     <color name="colorRipple">#BCBEC1</color>
+    <color name="shimmer_placeholder">#dddddd</color>
+    <color name="shimmer_blue">#5BC2F1</color>
 </resources>

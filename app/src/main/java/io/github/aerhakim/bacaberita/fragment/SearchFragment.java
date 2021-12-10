@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.RequestManager;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class SearchFragment extends Fragment implements SelectListener {
     SearchAdapter adapter;
     ProgressDialog dialog;
     SearchView searchView;
+    ShimmerFrameLayout shimmerFrameLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,26 +50,24 @@ public class SearchFragment extends Fragment implements SelectListener {
         View view = inflater
                 .inflate(R.layout.fragment_search, container, false);
         recyclerView = view.findViewById(R.id.rv_main);
+        shimmerFrameLayout = view.findViewById(R.id.shimmerLayout);
         searchView = view.findViewById(R.id.search_bar);
         Config config = new Config(getActivity());
         config.getNewsHealines(listener,"general", null);
-        cekKoneksi();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                dialog.setTitle("Memuat berita " + query + "...");
-                dialog.show();
                 Config config = new Config(getActivity());
                 config.getNewsHealines(listener,"general", query);
                 return true;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
         });
+
         return view;
     }
 
@@ -78,10 +78,8 @@ public class SearchFragment extends Fragment implements SelectListener {
         public void onFetchData(List<Article> list, String message) {
             if (list.isEmpty()){
                 Toast.makeText(getActivity(), "Data Tidak di Temukan!", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
             } else {
                 showNews(list);
-                dialog.dismiss();
             }
         }
 
@@ -96,6 +94,9 @@ public class SearchFragment extends Fragment implements SelectListener {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         adapter = new SearchAdapter(getActivity(), list, this);
         recyclerView.setAdapter(adapter);
+        shimmerFrameLayout.startShimmer();
+        shimmerFrameLayout.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -105,47 +106,15 @@ public class SearchFragment extends Fragment implements SelectListener {
     }
 
 
-    public void cekKoneksi () {
-        if(isNetworkAvailable()) {
-            dialog = new ProgressDialog(getActivity());
-            dialog.setTitle("Memuat Berita");
-            dialog.setMessage("Mohon Tunggu Sebentar...");
-            dialog.dismiss();
-        } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setCancelable(true);
-            builder.setTitle("Tidak ada Koneksi Internet!");
-            builder.setMessage("Silahkan Periksa Koneksi Internet Anda dan Coba Kembali!");
-            builder.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent j = getActivity().getIntent();
-                    j.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getActivity().finish();
-                    startActivity(j);
-                }
-            });
-
-            builder.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                }
-            });
-
-            AlertDialog dialog  = builder.create();
-            dialog.show();
-            Toast.makeText(getActivity(),"Koneksi Internet Tidak Ada", Toast.LENGTH_SHORT).show();
-
-        }
+    @Override
+    public void onResume() {
+        shimmerFrameLayout.startShimmer();
+        super.onResume();
     }
 
-
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-
+    @Override
+    public void onPause() {
+        shimmerFrameLayout.stopShimmer();
+        super.onPause();
     }
 }
