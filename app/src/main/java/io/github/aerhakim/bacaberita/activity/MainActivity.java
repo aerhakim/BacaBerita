@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+import dev.shreyaspatil.MaterialDialog.MaterialDialog;
 import io.github.aerhakim.bacaberita.R;
 import io.github.aerhakim.bacaberita.fragment.CategoryFragment;
 import io.github.aerhakim.bacaberita.fragment.HomeFragment;
@@ -50,5 +52,32 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
 
+        MaterialDialog mDialog = new MaterialDialog.Builder(this)
+                .setTitle("Ingin Keluar?")
+                .setMessage("Apakah Anda ingin keluar dari Baca Berita?")
+                .setCancelable(false)
+                .setPositiveButton("Keluar", R.drawable.ic_baseline_exit_to_app_24, new MaterialDialog.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface dialogInterface, int which) {
+                        MainActivity.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton("Batal", R.drawable.ic_baseline_close_24, new MaterialDialog.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface dialogInterface, int which) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .build();
+        // Show Dialog
+        mDialog.show();
+
+    }
 }

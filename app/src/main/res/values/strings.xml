@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Baca Berita</string>
-    <string name="api_key">26fd2977a7d24fd7809c989b1363ff61</string>
+    <string name="api_key">c408621f993049a280e6b9e311f5ab33</string>
+<!--    <string name="api_key">26fd2977a7d24fd7809c989b1363ff61</string>-->
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

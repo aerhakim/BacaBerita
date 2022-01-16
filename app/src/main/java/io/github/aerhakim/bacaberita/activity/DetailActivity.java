@@ -75,7 +75,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), MainActivity.class);
                 startActivity(i);
-
+                finish();
             }
         });
 
@@ -103,5 +103,10 @@ public class DetailActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Link Berita Berhasil dicopy", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+
     }
 }

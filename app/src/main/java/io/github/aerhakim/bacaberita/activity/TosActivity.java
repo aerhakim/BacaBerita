@@ -31,4 +31,9 @@ public class TosActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        finish();
+
+    }
 }
