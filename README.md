@@ -2,7 +2,7 @@
 ![bacaberita](https://aerhakim.github.io/images/bbR.png)
 Baca Berita adalah sebuah aplikasi portal berita lokal yang dibuat menggunakan API dari Newsapi.org
 
-[Download APK File](https://drive.google.com/file/d/1Bvb-I9a8rbvFBVner2Q372vmFGcCLl_Q/view?usp=sharing)
+[Download APK File](https://drive.google.com/file/d/1GAJ6Q-uvg7WIuCRwYhkL71ernmc5WF5a/view?usp=sharing)
 
 # Preview
 
